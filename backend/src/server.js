@@ -10,6 +10,14 @@ const PORT = process.env.PORT || 5000
 
 connectDB();
 
+//middleware
+app.use(express.json())
+
+app.use((req, res, next)=>{
+    console.log(`${req.method} ${req.url}`);
+    next();
+})
+
 //locahost:5001/api/notes
 app.use("/api/notes", notesRoutes)
 
